@@ -30,7 +30,9 @@ app.use(function (requset, response, next) {
   next()
 })
 
-
+app.get('/api',(req,res)=> {
+  res.send("HI")
+})
 
 app.use(passport.initialize())
 app.use(passport.session())
