@@ -30,6 +30,10 @@ app.use(function (requset, response, next) {
   next()
 })
 
+app.get('/', (req, res) => {
+  res.send("Root Path");
+});
+
 app.get('/api',(req,res)=> {
   res.send("HI")
 })
