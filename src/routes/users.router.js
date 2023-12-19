@@ -4,22 +4,21 @@ const passport = require('passport');
 const sendmail = require('../mail/mail');
 const usersRouter = express.Router();
 
-usersRouter.post('/login', (req,res,next) => {
+usersRouter.post('/login', (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
-    if (err){
-      return next(err)
+    if (err) {
+      return next(err);
     }
     if (!user) {
-      return res.json({msg: info})
+      return res.send("NO"); // 로그인 실패
     }
 
-    req.logIn(user, function(err){
-      if (err) { return next(err)}
-      res.redirect('/')
-    })
-  })(req, res, next) 
-})
-
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      res.send("OK"); // 로그인 성공
+    });
+  })(req, res, next);
+});
 usersRouter.post('/logout', (req, res, next) => {
   req.logOut(function (err) {
     if(err) { return next(err)}
@@ -31,8 +30,8 @@ usersRouter.post('/signup', async (req, res) => {
   const user = new User(req.body)
   try {
     await user.save()
-    sendmail("sm4638463864@gmail.com", "Jiseungmin", "welcome")
-    res.redirect('/login')
+   // sendmail("sm4638463864@gmail.com", "Jiseungmin", "welcome")
+    res.send('OK')
   } catch (error){
     console.error(error)
   }
