@@ -65,7 +65,7 @@ mongoose.connect("mongodb+srv://JSM:sj01080108%40%40@express.eehytgh.mongodb.net
   console.log(err)
 })
 
-const port = serverConfig.port
+const port = process.env.PORT || serverConfig.port
 
 app.listen(port, ()=> {
   console.log(`listening on ${port}`)
