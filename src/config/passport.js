@@ -40,7 +40,7 @@ passport.use("local", new LocalStrategy({ usernameField: 'email', passwordField:
   }
 ));
 
-const GoogleStrategyConfig = new GoogleStrategy({
+/*const GoogleStrategyConfig = new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: '/auth/google/callback',
@@ -63,7 +63,7 @@ const GoogleStrategyConfig = new GoogleStrategy({
 });
 
 
-const kakaoStrategyConfig = new KakaoStrategy({
+/*const kakaoStrategyConfig = new KakaoStrategy({
   clientID: process.env.KAKAO_CLIENTKEY,
   callbackURL: '/auth/kakao/callback',
 }, async (accessToken, refreshToken, profile, done) => {
@@ -82,12 +82,12 @@ const kakaoStrategyConfig = new KakaoStrategy({
   } catch (err) {
     done(err);
   }
-});
+});*/
 
 
 
 
-passport.use('google', GoogleStrategyConfig)
-passport.use('kakao', kakaoStrategyConfig)
+//passport.use('google', GoogleStrategyConfig)
+//passport.use('kakao', kakaoStrategyConfig)
 
 
